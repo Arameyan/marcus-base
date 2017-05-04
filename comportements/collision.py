@@ -22,7 +22,7 @@ traduire en consigne de moteurs.
 
 Une nouvelle commande doit interrompre une manoeuvre en cours.
 
-[(vitesse_gauche, vitesse_droite, duree), ...]
+[(vitesse_droit, vitesse_gauche, duree), ...]
 """
 
 class Collision(Comportement):
@@ -38,16 +38,14 @@ class Collision(Comportement):
 
         impact_av_dr = not get_input("P8_7")
         impact_av_ga = not get_input("P8_8")
-        impact_ar_dr = not get_input("P8_9")
-        impact_ar_ga = not get_input("P8_10")
 
         # Impact avant droit
         if impact_av_dr and not impact_av_ga:
             logging.info("Comportement {} : Impact avant droit, recule et tourne à gauche".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
-            return [(0, 0, 0.2),
-                    (-100, -100, 0.5),
-                    (-100, 100, duree_rotation)]
+            return [(75, 75, 0.2),
+                    (72, 72, 0.5),
+                    (78, 72, duree_rotation)]
 
         # Impact avant droit et gauche
         elif impact_av_dr and impact_av_ga:
@@ -55,26 +53,26 @@ class Collision(Comportement):
             tourne_gauche = choice((True, False))
             if tourne_gauche:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à gauche".format(self.nom))
-                return [(0, 0, 0.2),
-                        (-100, -100, 0.5),
-                        (-100, 100, duree_rotation)]
+                return [(75, 75, 0.2),
+                        (72, 72, 0.5),
+                        (78, 72, duree_rotation)]
             else:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à droite".format(self.nom))
-                return [(0, 0, 0.2),
-                        (-100, -100, 0.5),
-                        (100, -100, duree_rotation)]
+                return [(75, 75, 0.2),
+                        (72, 72, 0.5),
+                        (72, 78, duree_rotation)]
 
         # Impact avant gauche
         elif not impact_av_dr and impact_av_ga:
             logging.info("Comportement {} : Impact avant gauche, recule et tourne à droite".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
-            return [(0, 0, 0.2),
-                    (-100, -100, 0.5),
-                    (100, -100, duree_rotation)]
+            return [(75, 75, 0.2),
+                    (72, 72, 0.5),
+                    (72, 78, duree_rotation)]
 
-        # Impact arrière
-        elif impact_ar_dr or impact_ar_ga:
-            logging.info("Comportement {} : Impact arrière, arrêt".format(self.nom))
-            return [(0, 0, 0)]
+##         # Impact arrière
+##         elif impact_ar_dr or impact_ar_ga:
+##             logging.info("Comportement {} : Impact arrière, arrêt".format(self.nom))
+##             return [(0, 0, 0)]
 
         return None

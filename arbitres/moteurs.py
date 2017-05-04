@@ -85,7 +85,7 @@ class Moteurs(Arbitre):
 
         Une nouvelle commande doit interrompre une manoeuvre en cours.
 
-        [(vitesse_gauche, vitesse_droite, duree), ...]
+        [(vitesse_droit, vitesse_gauche, duree), ...]
         """
 
         # Une seule action à prendre

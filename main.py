@@ -40,10 +40,8 @@ class Marcus:
         logging.info("Programme lancé")
 
         # Initialisation des pare-chocs
-        set_input('P8_7') # Avant droit
-        set_input('P8_8') # Avant gauche
-        set_input('P8_9') # Arrière droit
-        set_input('P8_10') # Arrière gauche
+        set_input('P8_7') # Avant gauche (switch droit)
+        set_input('P8_8') # Avant droit  (switch gauche)
 
         # Initialisation de la CMUCam2+
         if not self.args.nocam:
@@ -107,7 +105,7 @@ class Marcus:
 
             # Arrêt du programme principal
             if self.args.stop:
-                if not get_input("P8_7") or not get_input("P8_8") or not get_input("P8_9") or not get_input("P8_10"):
+                if not get_input("P8_7") or not get_input("P8_8"):
                     self.quit()
 
             # Interrogation des arbitres

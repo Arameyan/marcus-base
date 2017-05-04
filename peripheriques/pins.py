@@ -17,10 +17,10 @@ import Adafruit_BBIO.ADC as ADC
 # pins[index] = in/out
 
 pins = dict()
-pins['P8_7'] = None # Bumper - Avant droit
-pins['P8_8'] = None # Bumper - Avant gauche
-pins['P8_9'] = None # Bumper - Arrière droit
-pins['P8_10'] = None # Bumper - Arrière gauche
+pins['P8_7'] = None # Bumper - Avant gauche (switch droit)
+pins['P8_8'] = None # Bumper - Avant droit (switch gauche)
+pins['P8_9'] = None # 
+pins['P8_10'] = None # 
 pins['P8_11'] = None # Reservee pour unittest
 pins['P8_12'] = None
 pins['P8_13'] = None # Peut être utilisée en PWM
@@ -52,12 +52,12 @@ pins['P8_44'] = None # Non-testée
 pins['P8_45'] = None # Non-testée
 pins['P8_46'] = None # Non-testée
 pins['P9_11'] = None
-pins['P9_12'] = None # Direction moteur droit
-pins['P9_13'] = None # Direction moteur droit
-pins['P9_14'] = None # Enable moteur droit (PWM)
-pins['P9_15'] = None # Direction moteur gauche
-pins['P9_16'] = None # Enable moteur gauche (PWM)
-pins['P9_21'] = None # Direction moteur gauche
+pins['P9_12'] = None # 
+pins['P9_13'] = None # 
+pins['P9_14'] = None # PWM moteur 1 (droit)
+pins['P9_15'] = None # 
+pins['P9_16'] = None # PWM moteur 2 (gauche)
+pins['P9_21'] = None # 
 pins['P9_22'] = None
 pins['P9_23'] = None
 #pins['P9_24'] = None # Réservée pour UART1
@@ -72,9 +72,9 @@ pins['P9_42'] = None
 
 # Pins analogiques
 #==================
-# P9_39 - AIN0 # GP2D12 avant milieu
-# P9_40 - AIN1 # GP2D12 avant gauche
-# P9_37 - AIN2 # GP2D12 avant droite
+# P9_39 - AIN0 # Rangefinder avant gauche
+# P9_40 - AIN1 # Rangefinder avant droit
+# P9_37 - AIN2 
 # P9_38 - AIN3
 # P9_33 - AIN4
 # P9_36 - AIN5
@@ -124,8 +124,8 @@ def set_pwm(pin):
 
     else:
         pins[pin] = "pwm"
-        # Démarre le PWM avec un "duty cycle" de 0%
-        PWM.start(pin, 0)
+        # Démarre le PWM avec un "duty cycle" de 75% (neutre sur ma drive)
+        PWM.start(pin, 75)
 
 def reset_pwm(pin):
     """Désactive la pin de sortie PWM.
