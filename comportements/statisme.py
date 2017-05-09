@@ -65,10 +65,10 @@ class Statisme(Comportement):
             tourne_gauche = choice((True, False))
             
             if tourne_gauche:
-                return [(-100, -100, duree_recul),
-                        (-100, 100, duree_rotation)]
+                return [(78, 78, duree_recul),
+                        (72, 78, duree_rotation)]
             else:
-                return [(-100, -100, duree_recul),
-                        (100, -100, duree_rotation)]
+                return [(78, 78, duree_recul),
+                        (78, 72, duree_rotation)]
 
         return None

@@ -51,7 +51,7 @@ class Exploration(Comportement):
             # S'il n'y a pas encore assez de cycles pour s'ennuyer...
             if len(config.passe_moteurs) < self.compteur_max:
                 logging.debug("Comportement {} : len(config.passe_moteurs) = {}".format(self.nom, len(config.passe_moteurs)))
-                return [(100, 100, 0)]
+                return [(72, 72, 0)]
 
             # Et qu'il n'y a eu que de l'exploration pendant ce temps...
             passe_max = list(islice(config.passe_moteurs, len(config.passe_moteurs)-self.compteur_max, len(config.passe_moteurs)))
@@ -65,10 +65,10 @@ class Exploration(Comportement):
                 tourne_gauche = choice((True, False))
 
                 if tourne_gauche:
-                    return [(-100, 100, duree_rotation)]
+                    return [(72, 78, duree_rotation)]
                 else:
-                    return [(100, -100, duree_rotation)]
+                    return [(78, 72, duree_rotation)]
 
         # Sinon...
-        return [(100, 100, 0)]
+        return [(72, 72, 0)]
 

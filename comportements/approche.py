@@ -52,11 +52,11 @@ class Approche(Comportement):
 
             elif config.track["pixels"] < (self.cible_pixels - self.ecart_pixels):
                 logging.debug("Cible trop loin, on s'approche")
-                return [(50, 50, 0)]
+                return [(72, 72, 0)]
 
             elif config.track["pixels"] > (self.cible_pixels + self.ecart_pixels):
                 logging.debug("Cible trop proche, on s'éloigne")
-                return [(-50, -50, 0)]
+                return [(78, 78, 0)]
 
             return None
 

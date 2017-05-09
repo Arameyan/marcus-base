@@ -17,13 +17,13 @@ class Memoire(Comportement):
 
     def decision(self):
 
-        actuel = (not get_input("P8_7"), not get_input("P8_8"), not get_input("P8_9"), not get_input("P8_10"))
+        actuel = (not get_input("P8_7"), not get_input("P8_8"))
         config.passe_capteurs["pare_chocs"].append(actuel)
 
         actuel = config.track
         config.passe_capteurs["camera"].append(actuel)
 
-        actuel = (get_dist("AIN0"), get_dist("AIN1"), get_dist("AIN2"))
+        actuel = (get_dist("AIN0"), get_dist("AIN1"))
         config.passe_capteurs["gp2d12"].append(actuel)
 
         return None
