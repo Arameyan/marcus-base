@@ -67,7 +67,7 @@ class Marcus:
         self.arbitres[m.nom].active(evasionbrusque.EvasionBrusque(nom="evasion brusque"), 5)
         if not self.args.nocam:
             self.arbitres[m.nom].active(approche.Approche(nom="approche"), 6)
-        self.arbitres[m.nom].active(statisme.Statisme(nom="statisme"), 8)
+        #self.arbitres[m.nom].active(statisme.Statisme(nom="statisme"), 8)
         self.arbitres[m.nom].active(exploration.Exploration(nom="exploration", priorite=9), 9)
 
         # Arbitre modes
