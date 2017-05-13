@@ -35,11 +35,12 @@ class Moteurs:
         """Exécute l'action demandée (une étape de vecteur, sans
         considérer la durée) sur les 2 moteurs. Considère maintenant
         les PMW.
+        Tuple: (vitesse_gauche, vitesse_droit, duree)
         """
-        # Moteur droit
-        set_duty_cycle('P9_14', abs(action[0]))
         # Moteur gauche
-        set_duty_cycle("P9_16", abs(action[1]))
+        set_duty_cycle("P9_16", abs(action[0]))
+        # Moteur droit
+        set_duty_cycle('P9_14', abs(action[1]))
  
 
     # Fonctions par moteur

@@ -22,7 +22,7 @@ traduire en consigne de moteurs.
 
 Une nouvelle commande doit interrompre une manoeuvre en cours.
 
-[(vitesse_droit, vitesse_gauche, duree), ...]
+[(vitesse_gauche, vitesse_droit, duree), ...]
 """
 
 class Collision(Comportement):
