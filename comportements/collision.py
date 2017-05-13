@@ -36,15 +36,15 @@ class Collision(Comportement):
 
     def decision(self):
 
-        impact_av_dr = not get_input("P8_7")
-        impact_av_ga = not get_input("P8_8")
+        impact_av_dr = not get_input("P8_8")
+        impact_av_ga = not get_input("P8_7")
 
         # Impact avant droit
         if impact_av_dr and not impact_av_ga:
             logging.info("Comportement {} : Impact avant droit, recule et tourne à gauche".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
             return [(75, 75, 0.2),
-                    (72, 72, 0.5),
+                    (78, 78, 0.5),
                     (78, 72, duree_rotation)]
 
         # Impact avant droit et gauche
@@ -54,12 +54,12 @@ class Collision(Comportement):
             if tourne_gauche:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à gauche".format(self.nom))
                 return [(75, 75, 0.2),
-                        (72, 72, 0.5),
+                        (78, 78, 0.5),
                         (78, 72, duree_rotation)]
             else:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à droite".format(self.nom))
                 return [(75, 75, 0.2),
-                        (72, 72, 0.5),
+                        (78, 78, 0.5),
                         (72, 78, duree_rotation)]
 
         # Impact avant gauche
@@ -67,7 +67,7 @@ class Collision(Comportement):
             logging.info("Comportement {} : Impact avant gauche, recule et tourne à droite".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
             return [(75, 75, 0.2),
-                    (72, 72, 0.5),
+                    (78, 78, 0.5),
                     (72, 78, duree_rotation)]
 
 ##         # Impact arrière
