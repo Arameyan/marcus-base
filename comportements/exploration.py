@@ -40,34 +40,34 @@ class Exploration(Comportement):
 
     def decision(self):
 
-        # Pour éviter d'atteindre -infini
-        if self.compteur > 0:
-            self.compteur -= 1
-            #logging.debug("Comportement {} : Compteur à {}".format(self.nom, self.compteur))
+##         # Pour éviter d'atteindre -infini
+##         if self.compteur > 0:
+##             self.compteur -= 1
+##             #logging.debug("Comportement {} : Compteur à {}".format(self.nom, self.compteur))
 
-        # Si le compteur est écoulé...
-        if self.compteur == 0:
+##         # Si le compteur est écoulé...
+##         if self.compteur == 0:
 
-            # S'il n'y a pas encore assez de cycles pour s'ennuyer...
-            if len(config.passe_moteurs) < self.compteur_max:
-                logging.debug("Comportement {} : len(config.passe_moteurs) = {}".format(self.nom, len(config.passe_moteurs)))
-                return [(72, 72, 0)]
+##             # S'il n'y a pas encore assez de cycles pour s'ennuyer...
+##             if len(config.passe_moteurs) < self.compteur_max:
+##                 logging.debug("Comportement {} : len(config.passe_moteurs) = {}".format(self.nom, len(config.passe_moteurs)))
+##                 return [(72, 72, 0)]
 
-            # Et qu'il n'y a eu que de l'exploration pendant ce temps...
-            passe_max = list(islice(config.passe_moteurs, len(config.passe_moteurs)-self.compteur_max, len(config.passe_moteurs)))
-            
-            if all(x in (self.priorite, ) for x in passe_max):
+##             # Et qu'il n'y a eu que de l'exploration pendant ce temps...
+##             passe_max = list(islice(config.passe_moteurs, len(config.passe_moteurs)-self.compteur_max, len(config.passe_moteurs)))
+##             
+##             if all(x in (self.priorite, ) for x in passe_max):
 
-                logging.info("Comportement {} : Trop tranquille".format(self.nom))
-                self.compteur = self.compteur_max
+##                 logging.info("Comportement {} : Trop tranquille".format(self.nom))
+##                 self.compteur = self.compteur_max
 
-                duree_rotation = self.duree_rotation_min + random()
-                tourne_gauche = choice((True, False))
+##                 duree_rotation = self.duree_rotation_min + random()
+##                 tourne_gauche = choice((True, False))
 
-                if tourne_gauche:
-                    return [(72, 78, duree_rotation)]
-                else:
-                    return [(78, 72, duree_rotation)]
+##                 if tourne_gauche:
+##                     return [(72, 78, duree_rotation)]
+##                 else:
+##                     return [(78, 72, duree_rotation)]
 
         # Sinon...
         return [(75, 75, 0)]
