@@ -30,7 +30,7 @@ class EvasionBrusque(Comportement):
     def variables(self):
 
         #self.seuil_avant = 45 # Seuil de détection, en cm
-        self.seuil_cote = 20 # Seuil de détection, en cm
+        self.seuil_cote = 25 # Seuil de détection, en cm
         self.duree_rotation_min = 0.5 # en s
 
     def decision(self):
