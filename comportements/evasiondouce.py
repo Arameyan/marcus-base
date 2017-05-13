@@ -29,7 +29,7 @@ class EvasionDouce(Comportement):
 
     def variables(self):
 
-        self.seuil = 80 # En cm
+        self.seuil = 70 # En cm
 
     def decision(self):
         av_ga = get_dist('AIN0') # Avant gauche
@@ -39,12 +39,12 @@ class EvasionDouce(Comportement):
         if av_ga < self.seuil and av_dr > self.seuil:
 
             logging.info("Comportement {} : Obstacle a gauche, evite a droite".format(self.nom))
-            return [(73, 72, 0)]
+            return [(71, 73, 0)]
 
         # Obstacle à droite mais pas à gauche
         if av_dr < self.seuil and av_ga > self.seuil:
 
             logging.info("Comportement {} : Obstacle a droite, evite a droite".format(self.nom))
-            return [(72, 73, 0)]
+            return [(73, 71, 0)]
 
         return None

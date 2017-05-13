@@ -63,7 +63,7 @@ class Marcus:
         self.arbitres[m.nom].active(collision.Collision(nom="collision"), 2)
         if not self.args.nocam:
             self.arbitres[m.nom].active(viser.Viser(nom="viser"), 3)
-        #self.arbitres[m.nom].active(evasiondouce.EvasionDouce(nom="evasion douce"), 4)
+        self.arbitres[m.nom].active(evasiondouce.EvasionDouce(nom="evasion douce"), 4)
         self.arbitres[m.nom].active(evasionbrusque.EvasionBrusque(nom="evasion brusque"), 5)
         if not self.args.nocam:
             self.arbitres[m.nom].active(approche.Approche(nom="approche"), 6)
