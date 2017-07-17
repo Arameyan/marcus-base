@@ -44,6 +44,7 @@ class Viser(Comportement):
 
         try:
             if int(config.track["confidence"]) < self.seuil_conf:
+		logging.debug("confidence trop faible: {}".format(int(config.track["confidence"])))
                 return None
 
             else:
@@ -52,7 +53,8 @@ class Viser(Comportement):
                 # inutiles lorsqu'elle n'a même pas d'action à prendre (si
                 # on est déjà bien aligné).
                 logging.debug("Comportement {} : Détection de la couleur recherchée".format(self.nom))
-                logging.debug("".format(config.track))
+                logging.debug("confidence suffisante: {}".format(int(config.track["confidence"])))
+		logging.debug("{}".format(config.track))
 
                 if config.track["mx"] < (self.centre_x - self.seuil_mx):
                     logging.debug("Cible à gauche, tourne à gauche")
