@@ -173,18 +173,18 @@ class Cmucam:
     # Converti de "T packet" à un dictionnaire
     #==========================================
     def t_packet_to_dict(self, t_packet):
-        t_dict = dict()
-        l = t_packet.split()
-        t_dict['mx'] = l.pop(0) # The middle of mass x value
-        t_dict['my'] = l.pop(0) # The middle of mass y value
-        t_dict['x1'] = l.pop(0) # The left most corner's x value
-        t_dict['y1'] = l.pop(0) # The left most corner's y value
-        t_dict['x2'] = l.pop(0) # The right most corner's x value
-        t_dict['y2'] = l.pop(0) # The right most corner's y value
-        t_dict['pixels'] = l.pop(0) # Number of Pixels in the tracked region, scaled and capped at 255: (pixels+4)/8
-        t_dict['confidence'] = l.pop(0) # The (# of pixels / area)*256 of the bounded rectangle and capped at 255
+		t_dict = dict()
+		l = t_packet.split()
+		t_dict['mx'] = l.pop(0) # The middle of mass x value
+		t_dict['my'] = l.pop(0) # The middle of mass y value
+		t_dict['x1'] = l.pop(0) # The left most corner's x value
+		t_dict['y1'] = l.pop(0) # The left most corner's y value
+		t_dict['x2'] = l.pop(0) # The right most corner's x value
+		t_dict['y2'] = l.pop(0) # The right most corner's y value
+		t_dict['pixels'] = l.pop(0) # Number of Pixels in the tracked region, scaled and capped at 255: (pixels+4)/8
+		t_dict['confidence'] = l.pop(0) # The (# of pixels / area)*256 of the bounded rectangle and capped at 255
 		t_dict['timestamp'] = time() # timestamp
-        return t_dict
+		return t_dict
 
     def test(self):
         while True:

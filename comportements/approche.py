@@ -38,10 +38,9 @@ class Approche(Comportement):
     """
 
     def variables(self):
-
-        self.seuil_conf = 10 # Seuil de détection (10 est peut-être trop sensible)
-        self.cible_pixels = 50 # Nombre de pixels désirés (à ajuster, pas testé)
-        self.ecart_pixels = 10 # Écart acceptable, à ajuster
+		self.seuil_conf = 10 # Seuil de détection (10 est peut-être trop sensible)
+		self.cible_pixels = 50 # Nombre de pixels désirés (à ajuster, pas testé)
+		self.ecart_pixels = 10 # Écart acceptable, à ajuster
 		self.derniere_lecture = None
 	
     def decision(self):
@@ -61,7 +60,6 @@ class Approche(Comportement):
 
 				return None
 			return None
-
-        except KeyError:
-            logging.error("Comportement {} : config.track est vide".format(self.nom))
-            return None
+		except KeyError:
+			logging.error("Comportement {} : config.track est vide".format(self.nom))
+			return None
