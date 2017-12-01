@@ -36,8 +36,8 @@ class Collision(Comportement):
 
     def decision(self):
 
-        impact_av_dr = not get_input("P8_8")
-        impact_av_ga = not get_input("P8_7")
+        impact_av_dr = not get_input("P8_7")
+        impact_av_ga = not get_input("P8_8")
 
         # Impact avant droit
         if impact_av_dr and not impact_av_ga:

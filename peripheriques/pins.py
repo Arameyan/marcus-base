@@ -17,8 +17,8 @@ import Adafruit_BBIO.ADC as ADC
 # pins[index] = in/out
 
 pins = dict()
-pins['P8_7'] = None # Bumper - Avant gauche (switch droit)
-pins['P8_8'] = None # Bumper - Avant droit (switch gauche)
+pins['P8_7'] = None # Bumper - Avant droit (switch droit)
+pins['P8_8'] = None # Bumper - Avant gauche (switch gauche)
 pins['P8_9'] = None # 
 pins['P8_10'] = None # 
 pins['P8_11'] = None # Reservee pour unittest
