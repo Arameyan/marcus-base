@@ -11,6 +11,8 @@ Tant que le code est en d√©veloppement, il est recommand√© de lancer l'applicati
 Pour lancer le programme dans screen et le d√©tacher imm√©diatement (donc pas besoin de faire CTRL-A D) :
 
     screen -d -m python main.py --verbose --logfile=marcus.log --nocam --nomode --stop
+    
+Encore plus simple, utiliser mosh plutÙt que SSH et laisser faire screen. ¿ tester mais Áa marche bien avec un autre BBB.
   
 Pour consulter l'aide :
 

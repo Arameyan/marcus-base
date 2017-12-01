@@ -31,7 +31,7 @@ class Viser(Comportement):
     général.
     
     Le dictionnaire config.track contient les éléments suivants :
-    mx my x1 y1 x2 y2 pixels confidence
+    mx my x1 y1 x2 y2 pixels confidence timestamp
     """
 
     def variables(self):
@@ -39,32 +39,26 @@ class Viser(Comportement):
         self.seuil_mx = 5 # Seuil d'alignement sur mx, en pixels
         self.seuil_conf = 10 # Seuil de détection (10 est peut-être trop sensible)
         self.centre_x = 50 # Centre de la fenêtre de détection, en pixels
+		self.derniere_lecture = None
 
     def decision(self):
 
         try:
             if int(config.track["confidence"]) < self.seuil_conf:
-		logging.debug("confidence trop faible: {}".format(int(config.track["confidence"])))
+				logging.debug("confidence trop faible: {}".format(int(config.track["confidence"])))
                 return None
 
-            else:
-                # Effacer ces lignes après quelques tests, je ne veux pas
-                # que ce comportement remplisse le journal de messsages
-                # inutiles lorsqu'elle n'a même pas d'action à prendre (si
-                # on est déjà bien aligné).
-                logging.debug("Comportement {} : Détection de la couleur recherchée".format(self.nom))
-                logging.debug("confidence suffisante: {}".format(int(config.track["confidence"])))
-		logging.debug("{}".format(config.track))
-
-                if config.track["mx"] < (self.centre_x - self.seuil_mx):
-                    logging.debug("Cible à gauche, tourne à gauche")
-                    return [(72, 78, 0)]
-
-                elif config.track["mx"] > (self.centre_x + self.seuil_mx):
+            elif self.derniere_lecture is not None or self.derniere_lecture != config.track["timestamp"]:
+				# Mise à jour du dernier timestamp reçu
+				self.derniere_lecture = config.track["timestamp"]
+				if config.track["mx"] < (self.centre_x - self.seuil_mx):
+					logging.debug("Cible à gauche, tourne à gauche")
+					return [(72, 78, 0)]
+				elif config.track["mx"] > (self.centre_x + self.seuil_mx):
                     logging.debug("Cibre à droite, tourne à droite")
                     return [(78, 72, 0)]
-
                 return None
+			return None
 
         except KeyError:
             logging.error("Comportement {0} : config.track est vide {1}".format(self.nom, config.track))
