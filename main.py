@@ -40,8 +40,8 @@ class Marcus:
         logging.info("Programme lancé")
 
         # Initialisation des pare-chocs
-        set_input('P8_7') # Avant gauche (switch droit)
-        set_input('P8_8') # Avant droit  (switch gauche)
+        set_input('P8_7') # Avant droit (switch droit)
+        set_input('P8_8') # Avant gauche  (switch gauche)
 
         # Initialisation de la CMUCam2+
         if not self.args.nocam:
