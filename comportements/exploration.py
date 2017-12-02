@@ -70,5 +70,5 @@ class Exploration(Comportement):
 ##                     return [(78, 72, duree_rotation)]
 
         # Sinon...
-        return [(72, 72, 0)]
+        return [(71, 71, 0)]
 

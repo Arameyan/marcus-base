@@ -44,7 +44,7 @@ class EvasionBrusque(Comportement):
             logging.info("Comportement {} : Obstacle a ga, tourne a dr".format(self.nom))
             duree_rotation = random()/2
             logging.info("Comportement {} : av_ga = {}".format(self.nom, av_ga))
-            return [(72, 78, duree_rotation)]
+            return [(70, 80, duree_rotation)]
 
         # Obstacle à droite (pas à gauche)
         elif av_dr <= self.seuil_cote and av_ga > self.seuil_cote:
@@ -53,7 +53,7 @@ class EvasionBrusque(Comportement):
             logging.info("Comportement {} : Obstacle a dr, tourne a ga".format(self.nom))
             duree_rotation = random()/2
             logging.info("Comportement {} : av_dr = {}".format(self.nom, av_dr))
-            return [(78, 72, duree_rotation)]
+            return [(80, 70, duree_rotation)]
 
         # Obstacle à gauche et à droite
         elif av_ga <= self.seuil_cote and av_dr <= self.seuil_cote:
@@ -63,10 +63,10 @@ class EvasionBrusque(Comportement):
 
             if tourne_gauche:
                 logging.info("Comportement {} : Obstacle a ga et a dr, tourne a ga".format(self.nom))
-                return [(78, 72, duree_rotation)]
+                return [(80, 70, duree_rotation)]
             else:
                 logging.info("Comportement {} : Obstacle a ga et a dr, tourne a dr".format(self.nom))
-                return [(72, 78, duree_rotation)]
+                return [(70, 80, duree_rotation)]
 
       
 
