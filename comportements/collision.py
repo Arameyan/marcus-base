@@ -33,6 +33,7 @@ class Collision(Comportement):
     def variables(self):
 
         self.duree_rotation_min = 0.5 # en secondes
+        self.duree_recul = 0.5 # sec
 
     def decision(self):
 
@@ -43,9 +44,9 @@ class Collision(Comportement):
         if impact_av_dr and not impact_av_ga:
             logging.info("Comportement {} : Impact avant droit, recule et tourne à gauche".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
-            return [(75, 75, 0.2),
-                    (78, 78, 0.5),
-                    (78, 72, duree_rotation)]
+            return [(75, 75, 0.1),
+                    (79, 79, self.duree_recul),
+                    (79, 71, duree_rotation)]
 
         # Impact avant droit et gauche
         elif impact_av_dr and impact_av_ga:
@@ -53,22 +54,22 @@ class Collision(Comportement):
             tourne_gauche = choice((True, False))
             if tourne_gauche:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à gauche".format(self.nom))
-                return [(75, 75, 0.2),
-                        (78, 78, 0.5),
-                        (78, 72, duree_rotation)]
+                return [(75, 75, 0.1),
+                        (79, 79, self.duree_recul),
+                        (79, 71, duree_rotation)]
             else:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à droite".format(self.nom))
-                return [(75, 75, 0.2),
-                        (78, 78, 0.5),
-                        (72, 78, duree_rotation)]
+                return [(75, 75, 0.1),
+                        (79, 79, self.duree_recul),
+                        (71, 79, duree_rotation)]
 
         # Impact avant gauche
         elif not impact_av_dr and impact_av_ga:
             logging.info("Comportement {} : Impact avant gauche, recule et tourne à droite".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
-            return [(75, 75, 0.2),
-                    (78, 78, 0.5),
-                    (72, 78, duree_rotation)]
+            return [(75, 75, 0.1),
+                    (79, 79, self.duree_recul),
+                    (71, 79, duree_rotation)]
 
 ##         # Impact arrière
 ##         elif impact_ar_dr or impact_ar_ga:
