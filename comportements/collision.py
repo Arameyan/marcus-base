@@ -32,7 +32,7 @@ class Collision(Comportement):
 
     def variables(self):
 
-        self.duree_rotation_min = 0.5 # en secondes
+        self.duree_rotation_min = 0.4 # en secondes
         self.duree_recul = 0.5 # sec
 
     def decision(self):
@@ -45,7 +45,7 @@ class Collision(Comportement):
             logging.info("Comportement {} : Impact avant droit, recule et tourne à gauche".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
             return [(75, 75, 0.1),
-                    (79, 79, self.duree_recul),
+                    (80, 80, self.duree_recul),
                     (79, 71, duree_rotation)]
 
         # Impact avant droit et gauche
@@ -55,12 +55,12 @@ class Collision(Comportement):
             if tourne_gauche:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à gauche".format(self.nom))
                 return [(75, 75, 0.1),
-                        (79, 79, self.duree_recul),
+                        (80, 80, self.duree_recul),
                         (79, 71, duree_rotation)]
             else:
                 logging.info("Comportement {} : Impact avant droit et gauche, recule et tourne à droite".format(self.nom))
                 return [(75, 75, 0.1),
-                        (79, 79, self.duree_recul),
+                        (80, 80, self.duree_recul),
                         (71, 79, duree_rotation)]
 
         # Impact avant gauche
@@ -68,7 +68,7 @@ class Collision(Comportement):
             logging.info("Comportement {} : Impact avant gauche, recule et tourne à droite".format(self.nom))
             duree_rotation = self.duree_rotation_min + random()/2
             return [(75, 75, 0.1),
-                    (79, 79, self.duree_recul),
+                    (80, 80, self.duree_recul),
                     (71, 79, duree_rotation)]
 
 ##         # Impact arrière
