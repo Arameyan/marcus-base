@@ -45,17 +45,17 @@ class Viser(Comportement):
 			if int(config.track["confidence"]) < self.seuil_conf:
 				logging.debug("confidence trop faible: {}".format(int(config.track["confidence"])))
 				return None
-			elif self.derniere_lecture is not None or self.derniere_lecture != config.track["timestamp"]:
+			elif (self.derniere_lecture is None or self.derniere_lecture != config.track["timestamp"]):
 				# Mise à jour du dernier timestamp reçu
 				self.derniere_lecture = config.track["timestamp"]
-				if config.track["mx"] < (self.centre_x - self.seuil_mx):
-					logging.debug("Cible à gauche, tourne à gauche")
-					return [(72, 78, 0)]
+				if int(config.track["mx"]) < (self.centre_x + self.seuil_mx):
+					logging.info("Cible a gauche, tourne a gauche (mx = {})".format(config.track["mx"]))
+					return [(77, 73, 0)]
 				elif config.track["mx"] > (self.centre_x + self.seuil_mx):
-					logging.debug("Cibre à droite, tourne à droite")
-					return [(78, 72, 0)]
+					logging.info("Cible a droite, tourne a droite (mx = {})".format(config.track["mx"]))
+					return [(73, 77, 0)]
 				return None
 			return None
 		except KeyError:
-			logging.error("Comportement {0} : config.track est vide {1}".format(self.nom, config.track))
+			logging.error("Comportement {} : config.track est vide".format(self.nom))
 			return None

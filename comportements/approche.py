@@ -47,19 +47,19 @@ class Approche(Comportement):
 		try:
 			if int(config.track["confidence"]) < self.seuil_conf:
 				return None
-			elif self.derniere_lecture is not None or self.derniere_lecture != config.track["timestamp"]:
+			elif (self.derniere_lecture is None or self.derniere_lecture != config.track["timestamp"]):
 				# Mise à jour du dernier timestamp reçu
 				self.derniere_lecture = config.track["timestamp"]
-				if config.track["pixels"] < (self.cible_pixels - self.ecart_pixels):
-					logging.debug("Cible trop loin, on s'approche")
-					return [(72, 72, 0)]
+				if int(config.track["pixels"]) < (self.cible_pixels - self.ecart_pixels):
+					logging.info("Cible trop loin, on s'approche")
+					return [(71, 71, 0)]
 
-				elif config.track["pixels"] > (self.cible_pixels + self.ecart_pixels):
-					logging.debug("Cible trop proche, on s'éloigne")
-					return [(78, 78, 0)]
+				#elif config.track["pixels"] > (self.cible_pixels + self.ecart_pixels):
+				#	logging.debug("Cible trop proche, on s'éloigne")
+				#	return [(78, 78, 0)]
 
 				return None
 			return None
 		except KeyError:
-			logging.error("Comportement {} : config.track est vide".format(self.nom))
+			logging.debug("Comportement {} : config.track est vide".format(self.nom))
 			return None
