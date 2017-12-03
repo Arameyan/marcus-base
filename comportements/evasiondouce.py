@@ -39,8 +39,8 @@ class EvasionDouce(Comportement):
 
         # Obstacle à gauche mais pas à droite
         if av_ga < self.seuil_1 and av_dr > self.seuil_1:
-            logging.info("Comportement {} : Obstacle a ga, evite a dr".format(self.nom))
-            logging.info("Lecture du rangefinder ga: {}".format(av_ga))
+            logging.info("{} : Obstacle ga, evite a dr, av_ga = {}".format(self.nom, av_ga))
+            #logging.info("Lecture du rangefinder ga: {}".format(av_ga))
             if av_ga < self.seuil_2:
                 return [(70, 74, 0)]    # obstacle proche
             else:
@@ -48,8 +48,8 @@ class EvasionDouce(Comportement):
 
         # Obstacle à droite mais pas à gauche
         if av_dr < self.seuil_1 and av_ga > self.seuil_1:
-            logging.info("Comportement {} : Obstacle a dr, evite a dr".format(self.nom))
-            logging.info("Lecture du rangefinder dr: {}".format(av_dr))
+            logging.info("{} : Obstacle dr, evite a ga, av_dr = {}".format(self.nom, av_dr))
+            #logging.info("Lecture du rangefinder dr: {}".format(av_dr))
             if av_dr < self.seuil_2:
                 return [(74, 70, 0)]    # obstacle proche
             else:
