@@ -29,22 +29,30 @@ class EvasionDouce(Comportement):
 
     def variables(self):
 
-        self.seuil = 60 # En cm
+        self.seuil_1 = 65 # En cm
+        self.seuil_2 = 40 # En cm
+        
 
     def decision(self):
         av_ga = get_dist('AIN0') # Avant gauche
         av_dr = get_dist('AIN1') # Avant droit
 
         # Obstacle à gauche mais pas à droite
-        if av_ga < self.seuil and av_dr > self.seuil:
+        if av_ga < self.seuil_1 and av_dr > self.seuil_1:
 			logging.info("Comportement {} : Obstacle a ga, evite a dr".format(self.nom))
 			logging.info("Lecture du rangefinder ga: {}".format(av_ga))
-			return [(71, 73, 0)]
+			if av_ga < self.seuil_2
+                return [(70, 74, 0)]    # obstacle proche
+            else:
+                return [(71, 73, 0)]    # obstacle loin
 
         # Obstacle à droite mais pas à gauche
-        if av_dr < self.seuil and av_ga > self.seuil:
+        if av_dr < self.seuil_1 and av_ga > self.seuil_1:
 			logging.info("Comportement {} : Obstacle a dr, evite a dr".format(self.nom))
 			logging.info("Lecture du rangefinder dr: {}".format(av_dr))
-			return [(73, 71, 0)]
+            if av_dr < self.seuil_2
+                return [(74, 70, 0)]    # obstacle proche
+            else:
+                return [(73, 71, 0)]    # obstacle loin
 
         return None

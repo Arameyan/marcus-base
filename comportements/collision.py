@@ -33,7 +33,7 @@ class Collision(Comportement):
     def variables(self):
 
         self.duree_rotation_min = 0.4 # en secondes
-        self.duree_recul = 0.5 # sec
+        self.duree_recul = 0.6 # sec
 
     def decision(self):
 

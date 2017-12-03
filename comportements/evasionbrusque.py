@@ -31,7 +31,7 @@ class EvasionBrusque(Comportement):
 
         #self.seuil_avant = 45 # Seuil de détection, en cm
         self.seuil_cote = 25 # Seuil de détection, en cm
-        self.duree_rotation_min = 0.4 # en s
+        self.duree_rotation_min = 0.2 # en s
 
     def decision(self):
         av_ga = get_dist('AIN0') # Avant gauche
