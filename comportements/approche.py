@@ -51,7 +51,7 @@ class Approche(Comportement):
 				# Mise à jour du dernier timestamp reçu
 				self.derniere_lecture = config.track["timestamp"]
 				if int(config.track["pixels"]) < (self.cible_pixels - self.ecart_pixels):
-					logging.info("Cible trop loin, on s'approche")
+					logging.info("Approche: cible trop loin, on approche (mx = {})".format(config.track["mx"]))
 					return [(71, 71, 0)]
 
 				#elif config.track["pixels"] > (self.cible_pixels + self.ecart_pixels):
